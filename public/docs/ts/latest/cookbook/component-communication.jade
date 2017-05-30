@@ -2,9 +2,11 @@ include ../_util-fns
 
 <a id="top"></a>
 :marked
+  이 쿡북은 두개 이상의 컴포넌트가 정보를 공유하는 주된 시나리오들에 대한 레시피들로 이루어져 있습니다.
+  
   This cookbook contains recipes for common component communication scenarios
   in which two or more components share information.
-
+  
 //
   .l-sub-section
     :marked
@@ -13,23 +15,27 @@ include ../_util-fns
 
 <a id="toc"></a>
 :marked
+  ## 목차
+  
   ## Table of contents
   
-  [Pass data from parent to child with input binding](#parent-to-child)
+  [인풋 바인딩을 통해 부모 컴포넌트의 데이터를 자식 컴포넌트에 보내주기](#parent-to-child)
 
-  [Intercept input property changes with a setter](#parent-to-child-setter)
+  [setter로 바뀌는 인풋 값을 중간에 가로채기](#parent-to-child-setter)
 
-  [Intercept input property changes with *ngOnChanges*](#parent-to-child-on-changes)
-
-  [Parent listens for child event](#child-to-parent)
+  [*ngOnChanges*로 바뀌는 인풋 값을 중간에 가로채기](#parent-to-child-on-changes)
   
-  [Parent interacts with child via a *local variable*](#parent-to-child-local-var)
+  [부모 컴포넌트가 자식 컴포넌트의 이벤트에 대기하기](#child-to-parent)
   
-  [Parent calls a *ViewChild*](#parent-to-view-child)
+  [지역변수를 통해 부모 컴포넌트가 자식 컴포넌트와 상호작용하기](#parent-to-child-local-var)
+  
+  [ViewChild를 이용해 부모컴포넌트에서 자식컴포넌트 불러오기](#parent-to-view-child)
 
-  [Parent and children communicate via a service](#bidirectional-service)
+  [service를 이용해 부모 컴포넌트와 자식 컴포넌트 간 통신하기](#bidirectional-service)
 
 :marked
+  **예시는 <live-example name="cb-component-communication">여기</live-example>를 참고하세요**.
+  
   **See the <live-example name="cb-component-communication"></live-example>**.
 
 .l-main-section
