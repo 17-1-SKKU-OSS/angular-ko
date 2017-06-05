@@ -265,6 +265,11 @@ figure.image-display
 
 +makeExample('hierarchical-dependency-injection/ts/src/app/hero-tax-return.component.ts', 'providers')
 :marked
+  `HeroTaxReturnComponent`는`HeroTaxReturnService`의 자체 공급자를 가지고 있습니다.
+   모든 컴포넌트 _인스턴트_에는 자체 주입기가 있음을 잊지 마세요.
+   컴포넌트 수준에서 서비스를 제공하면 컴포넌트의 _모든_ 인스턴스가 자체 서비스 인스턴스를 가져옵니다.
+   소득 신고서에서 덮어 쓰기 문제가 없습니다. 엉망이 아닙니다.
+
   The `HeroTaxReturnComponent` has its own provider of the `HeroTaxReturnService`. 
   Recall that every component _instance_ has its own injector. 
   Providing the service at the component level ensures that _every_ instance of the component gets its own, private instance of the service.
@@ -272,23 +277,40 @@ figure.image-display
   
 .l-sub-section
   :marked
+    나머지 시나리오 코드는 문서의 다른 부분에서 배울 수 있는 다른 Angular 기능과 기술들에 의존합니다.
+    이를 검토하고 <live-example></live-example> 에서 다운로드 할 수 있습니다.
+
     The rest of the scenario code relies on other Angular features and techniques that you can learn about elsewhere in the documentation.
     You can review it and download it from the <live-example></live-example>
 
 :marked
+  ### 시나리오: 특수한 공급자
+
   ### Scenario: specialized providers
+
+  서비스를 다시 제공하는 또 다른 이유는 컴포넌트 트리의 더 깊은 레벨에서 해당 서비스를 _더 특수한_ 구현으로 대체하기 위함입니다.
 
   Another reason to re-provide a service is to substitute a _more specialized_ implementation of that service,
   deeper in the component tree.
+
+  [Dependency Injection] (./ dependency-injection.html) 가이드의 Car 예제를 다시 생각해보세요.
+  `CarService`,`EngineService`,`TiresService`를 위한 _generic_ providers를 사용하여 루트 주입기 (A로 표시)를 설정하였습니다.
 
   Consider again the Car example from the [Dependency Injection](./dependency-injection.html) guide.
   Suppose you configured the root injector (marked as A) with _generic_ providers for 
   `CarService`, `EngineService` and `TiresService`.
 
+  당신은 다음과 같이 세 가지 일반 서비스로 구성된 자동차를 표시하는 자동차 컴포넌트 (A)를 만들었습니다.
+
   You create a car component (A) that displays a car constructed from these three generic services.
+
+  그다음 당신은 `CarService` and `EngineService`를 위한 _특수한_ provider를 정의하는 자식 컴포넌트 (B)를 생성합니다.
+  _특수_ 공급자는 컴포넌트 B에서 진행되는 모든 것에 적합한 특수한 능력을 가지고 있습니다.
 
   Then you create a child component (B) that defines its own, _specialized_ providers for `CarService` and `EngineService`
   that have special capabilites suitable for whatever is going on in component (B).
+
+  컴포넌트 (C)는 `CarService`를 위한 _더 특수한_ provider임과 동시에 컴포넌트 B의 자식입니다.
 
   Component (B) is the parent of another component (C) that defines its own, even _more specialized_ provider for `CarService`.
 
@@ -296,7 +318,17 @@ figure.image-display
   img(src="/resources/images/devguide/dependency-injection/car-components.png" alt="car components" width="220")
 
 :marked
+  뒤에서 각 컴포넌트는 해당 컴포넌트 자체에 대해 정의 된 provider를 자체 주입기로 설정합니다. 이 개수는 0개, 1개, 또는 그 이상이 될 수 있습니다.
+
   Behind the scenes, each component sets up its own injector with zero, one, or more providers defined for that component itself.
+
+  가장 아래의 컴포넌트 (C)에서 'Car'의 인스턴스를 해결하면
+  그 컴포넌트의 주입기는 주입기 (B)에 의해 해석되는 "Engine"을 갖는 주입기 (C)에 의해 해결된 "Car"의 인스턴스를 생성하고,
+  `Tires'는 root 주입기 (A)가 해결합니다.
+
+  만약 여러분이 'Car 인스턴스를 컴포넌트 트리에서 가장 낮은 레벨인 컴포넌트 (C)에서 해결한다면,
+  이것의 주입기는 root 주입기 (A)가 해결한 'Tires'와 주입기 (B)가 해결한 'Engine'로
+  주입기 (C)가 해결한 'Car' 인스턴스를 생성할 것입니다.
 
   When you resolve an instance of `Car` at the deepest component (C),
   its injector produces an instance of `Car` resolved by injector (C) with an `Engine` resolved by injector (B) and
@@ -307,7 +339,10 @@ figure.image-display
 
 .l-sub-section
   :marked
-    The code for this _cars_ scenario is in the `car.components.ts` and `car.services.ts` files of the sample
+    이 _cars_ 시나리오의 코드는 `car.components.ts` 및`car.services.ts` 파일에 있으
+    <live-example> </ live-example> 파일을 검토하고 다운로드 할 수 있습니다.
+
+    The code for this _c며ars_ scenario is in the `car.components.ts` and `car.services.ts` files of the sample
     which you can review and download from the <live-example></live-example>
 :marked
 //- ## Advanced Dependency Injection in Angular
