@@ -10,6 +10,8 @@ include ../_util-fns
 //
   .l-sub-section
     :marked
+      컴포넌트 간 통신에 대한 각각의 기본적인 개념에 대해 알고 싶다면, [컴포넌트 간 통신]() 문서에서 자세한 설명과 예시들을 찾아볼 수 있습니다.
+
       For an in-depth look at each fundamental concepts in component communication, we can find detailed description and
       samples in the [Component Communication]() document.
 
@@ -19,31 +21,31 @@ include ../_util-fns
 
   ## Table of contents
 
-  [인풋 바인딩을 통해 부모 컴포넌트의 데이터를 자식 컴포넌트에 보내주기](#parent-to-child)
+  [인풋 바인딩으로 부모 컴포넌트에서 자식 컴포넌트로 데이터 보내기](#parent-to-child)
 
   [Pass data from parent to child with input binding](#parent-to-child)
 
-  [setter로 바뀌는 인풋 값을 중간에 가로채기](#parent-to-child-setter)
+  [setter로 인풋 속성 변경 잡아내기](#parent-to-child-setter)
 
   [Intercept input property changes with a setter](#parent-to-child-setter)
 
-  [*ngOnChanges*로 바뀌는 인풋 값을 중간에 가로채기](#parent-to-child-on-changes)
+  [*ngOnChanges*로 바뀌는 인풋 값을 잡아내기](#parent-to-child-on-changes)
 
   [Intercept input property changes with *ngOnChanges*](#parent-to-child-on-changes)
 
-  [부모 컴포넌트가 자식 컴포넌트의 이벤트에 대기하기](#child-to-parent)
+  [부모 컴포넌트가 자식 컴포넌트 event를 받아올 때](#child-to-parent)
 
   [Parent listens for child event](#child-to-parent)
 
-  [지역변수를 통해 부모 컴포넌트가 자식 컴포넌트와 상호작용하기](#parent-to-child-local-var)
+  [*지역 변수*로 부모 컴포넌트와 자식 컴포넌트 간 상호작용하기](#parent-to-child-local-var)
 
   [Parent interacts with child via a *local variable*](#parent-to-child-local-var)
 
-  [ViewChild를 이용해 부모컴포넌트에서 자식컴포넌트 불러오기](#parent-to-view-child)
+  [ViewChild를 이용해 부모 컴포넌트에서 자식 컴포넌트 불러오기](#parent-to-view-child)
 
   [Parent calls a *ViewChild*](#parent-to-view-child)
 
-  [service를 이용해 부모 컴포넌트와 자식 컴포넌트 간 통신하기](#bidirectional-service)
+  [service를 통한 부모와 자식 컴포넌트 간 통신하기](#bidirectional-service)
 
   [Parent and children communicate via a service](#bidirectional-service)
 
@@ -210,7 +212,7 @@ figure.image-display
 .l-main-section
 <a id="child-to-parent"></a>
 :marked
-  ## 부모 컴포넌트가 자식 컴포넌트 event를 listen할 때
+  ## 부모 컴포넌트가 자식 컴포넌트 event를 받아올 때
 
   ## Parent listens for child event
 
@@ -267,7 +269,7 @@ figure.image-display
 
 .l-main-section#parent-to-child-local-var
 :marked
-  ## *지역 변수*를 통해 자식 컴포넌트와 상호작용하기
+  ## *지역 변수*로 부모 컴포넌트와 자식 컴포넌트 간 상호작용하기
 
   ## Parent interacts with child via *local variable*
 
@@ -347,7 +349,7 @@ a(id="countdown-tests")
 .l-main-section
 <a id="parent-to-view-child"></a>
 :marked
-  ## 자식 컴포넌트가 *ViewChild*를 부르게 하기
+  ## *ViewChild*를 이용해 부모 컴포넌트에서 자식 컴포넌트 불러오기
 
   ## Parent calls a *ViewChild*
 
