@@ -78,7 +78,6 @@ include ../_util-fns
   부모의 `master` 스트링 타입 속성을 자식 컴포넌트의 `master` 바로가기에 묶고
   매 반복 때 마다 쓰이는 `hero` 인스턴스를 자식 컴포넌트의 `hero` 속성에 묶습니다.
 
-
   The `HeroParentComponent` nests the child `HeroChildComponent` inside an `*ngFor` repeater,
   binding its `master` string property to the child's `master` alias
   and each iteration's `hero` instance to the child's `hero` property.
@@ -307,6 +306,7 @@ figure.image-display
 
   The parent component cannot data bind to the child's
   `start` and `stop` methods nor to its `seconds` property.
+
 
   이 때 자식 컴포넌트를 가리키는 지역 변수 (`#timer`)를  (`<countdown-timer>`)라는 태그 안에 지정해줍니다.
   이는 자식 컴포넌트를 가리키는 레퍼런스가 생기고 자식 컴포넌트의 *모든 속성과 메소드들*을 부모 컴포넌트 template 안에서 액세스할 수 있습니다.
