@@ -808,26 +808,26 @@ table
         A [_Routing Module_](../guide/router.html#routing-module) **provides routing configuration** for another module.
 
         A Routing Module separates routing concerns from its companion module.
-        
+
         It typically:
         * defines routes
         * adds router configuration to the module's `imports`
         * re-exports `RouterModule`
         * adds guard and resolver service providers to the module's `providers`.
-        
+
         The name of the Routing Module should parallel the name of its companion module, using the suffix "Routing".
         For example, `FooModule` in `foo.module.ts` has a routing module named `FooRoutingModule`
         in `foo-routing.module.ts`
-        
-        If the companion module is the _root_ `AppModule`, 
-        the `AppRoutingModule` adds router configuration to its `imports` with `RouterModule.forRoot(routes)`. 
+
+        If the companion module is the _root_ `AppModule`,
+        the `AppRoutingModule` adds router configuration to its `imports` with `RouterModule.forRoot(routes)`.
         All other Routing Modules are children that import `RouterModule.forChild(routes)`.
 
-        A Routing Module re-exports the `RouterModule` as a convenience 
-        so that components of the companion module have access to 
+        A Routing Module re-exports the `RouterModule` as a convenience
+        so that components of the companion module have access to
         router directives such as `RouterLink` and `RouterOutlet`.
 
-        A Routing Module **should not have its own `declarations`!** 
+        A Routing Module **should not have its own `declarations`!**
         &nbsp; Components, directives, and pipes are the **responsibility of the feature module**
         not the _routing_ module.
 
